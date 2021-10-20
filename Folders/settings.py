@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
+    'rest_framework_simplejwt.token_blacklist',
 
     # My Apps
     'files.apps.FilesConfig',
@@ -140,12 +142,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
+    ]
 }
+
+CORS_ALLOWED_ORIGINS = [
+"http://localhost:3000"
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -161,6 +167,9 @@ AWS_S3_FILE_OVERWRITE = os.getenv('AWS_S3_FILE_OVERWRITE')
 AWS_DEFAULT_ACL = os.getenv('AWS_DEFAULT_ACL')
 AWS_S3_VERIFY = os.getenv('AWS_S3_VERIFY')
 DEFAULT_FILE_STORAGE = str(os.getenv('DEFAULT_FILE_STORAGE'))
+
+AWS_S3_USE_SSL=False
+AWS_DEFAULT_ACL='public-read'
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),

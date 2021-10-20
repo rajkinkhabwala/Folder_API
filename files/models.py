@@ -8,6 +8,9 @@ class Upload(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, default=1, related_name="user")
 
+    # def get_queryset(self):
+    #     return User.objects.filter(owner=self.kwargs['pk'])
+
     class Meta:
         verbose_name = 'Upload'
         verbose_name_plural = 'Uploads'

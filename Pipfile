@@ -7,11 +7,11 @@ name = "pypi"
 django = "*"
 djangorestframework = "*"
 psycopg2 = "*"
-django-storages = "*"
-boto3 = "*"
 python-dotenv = "*"
 django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
+django-storages = "*"
+boto3 = "*"
 
 [dev-packages]
 
