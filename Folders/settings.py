@@ -26,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2%9h6)1ms%$8p7xyq+8svd8c!_q(dkyzw---=0$-6%l$&l1kxr'
+SECRET_KEY = str(os.getenv('DJANGO_SECRET'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Folder-env.eba-jywy3mte.us-west-2.elasticbeanstalk.com']
 
 
 # Application definition
@@ -154,7 +154,7 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-"http://localhost:3000"
+'http://localhost:3000'
 ]
 
 # Default primary key field type
